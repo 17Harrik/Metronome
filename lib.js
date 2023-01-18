@@ -11,6 +11,7 @@ var running = false;
 var bpm = 60;   // beats per minute
 var callback = undefined;
 var indicatorVisible = false;
+let beat = new Audio("");
 
 btnStartStop.addEventListener("click", function (e) {
 
