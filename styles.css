@@ -27,6 +27,7 @@ input {
     right: 1em;
     bottom: 1em;
     opacity: 0.8;
+    border: solid 2px white;
 }
 
 #txtBPM {
