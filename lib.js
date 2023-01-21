@@ -5,13 +5,15 @@ const btnIncreaseBPM = document.getElementById("btnIncreaseBPM");
 const bpmInput = document.getElementById("txtBPM");
 const btnStartStop = document.getElementById("btnStartStop");
 const logo = document.getElementById("logo");
+const highContrastBtn = document.getElementById("highContrastBtn");
 const MAX_BPM = 120;
 const MIN_BPM = 50;
 var running = false;
 var bpm = 60;   // beats per minute
 var callback = undefined;
 var indicatorVisible = false;
-let beat = new Audio("");
+var highContrast = false;
+let beat = new Audio("beat.wav");
 
 btnStartStop.addEventListener("click", function (e) {
 
@@ -30,9 +32,15 @@ function setSpeedAndStart() {
 }
 
 function onTick() {
-    console.log("Tick")
-    indicatorVisible = !indicatorVisible
-    logo.style.borderColor = indicatorVisible? "red":"white"
+    indicatorVisible = !indicatorVisible;
+    
+    if (running) {
+        console.log("Tick");
+        logo.style.borderColor = indicatorVisible ? "red" : "white";
+        beat.load();
+        beat.play();
+    }
+    
 }
 
 // add event handlers
@@ -42,7 +50,7 @@ bpmInput.onchange = function (e) {
     if (isNaN(bpm)) {
         bpm = 50;
     }
-    console.log(bpm)
+    console.log(bpm);
 }
 
 btnDecreaseBPM.onclick = function (e) {
@@ -53,6 +61,29 @@ btnDecreaseBPM.onclick = function (e) {
 btnIncreaseBPM.onclick = function (e) {
     bpm += 5;
     updateBPM();
+}
+
+highContrastBtn.onclick = function (e) {
+    if (highContrast) {
+        normalToggle();
+        highContrast = !highContrast;
+        console.log("low")
+    }
+    else {
+        highContrastToggle();
+        highContrast = !highContrast;
+        console.log("high")
+    }
+}
+
+function highContrastToggle() {
+    var body = document.querySelector("body");
+    body.style.filter = "grayscale(100%)";
+}
+
+function normalToggle() {
+    var body = document.querySelector("body");
+    body.removeAttribute("style");
 }
 
 function updateBPM() {

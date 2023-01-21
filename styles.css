@@ -3,7 +3,7 @@
 }
 
 #metronome {
-    background: linear-gradient(#2b2b2b, #c1c1c1);
+    background: linear-gradient(#9fccfa, #0974f1);
     padding: 1em;
     margin: 2em;
     border-radius: 2em;
@@ -40,8 +40,12 @@ input {
     font-size: 1.5em;
 }
 
-.bpm-change:hover {
-    box-shadow: white 0 0 10px 10px;    
+#btnIncreaseBPM:hover {
+    box-shadow: green 0 0 8px 8px;
+}
+
+#btnDecreaseBPM:hover {
+    box-shadow: red 0 0 8px 8px;
 }
 
 #btnDecreaseBPM {
@@ -50,5 +54,6 @@ input {
 
 #btnIncreaseBPM {
     background-color: green;
+    
 }
 
